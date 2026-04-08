@@ -1,0 +1,97 @@
+listen_id,date,source,artist,album,rating,rating_label,supergenre,genre,subgenre,release_date,notes
+1,2026-03-15,Gemini,Hania Rani,Esja,1,Bra,Ambient,Modern Classical,Neo-Classical,2019-04,Ny för mig
+2,2026-03-15,Gemini,The Midnight,Syndicate,1,Bra,Electronic,Synthwave,Retrowave,2025-10,Ny för mig
+3,2026-03-16,Gemini,Interpol,Turn on the bright lights,0,Neutral,Rock,Indie Rock,Post-Punk Revival,2002-08,Ny för mig
+4,2026-03-16,Gemini,Rufus Wainwright,Want one,0,Neutral,Pop,Art Pop,Baroque Pop,2003-09,Ny för mig
+5,2026-03-16,Gemini,Massive Attack,Mezzanine,1,Bra,Electronic,Trip Hop,Downtempo,1998-04,
+6,2026-03-17,Gemini,Casiopea,Casiopea,0,Neutral,Jazz,Jazz-Funk,Fusion,1979-05,Ny för mig
+7,2026-03-17,Gemini,Jon Hopkins,Immunity,0,Neutral,Electronic,Techno,Ambient Techno,2013-06,Ny för mig
+8,2026-03-17,Gemini,José González,Veneer,1,Bra,Rock,Indie Folk,Acoustic,2003-10,
+9,2026-03-17,Gemini,Kendrik Lamar,To pimp a butterfly,-1,Dålig,Hip Hop,Experimental Hip Hop,Conscious Hip Hop,2015-03,Ny för mig
+10,2026-03-17,Gemini,Slayer,Reign in blood,2,Mycket bra,Metal,Thrash Metal,Speed Metal,1986-10,
+11,2026-03-18,Gemini,Nine Inch Nails,The downward spiral,1,Bra,Industrial,Industrial Rock,Industrial Metal,1994-03,
+12,2026-03-18,Gemini,Fela Kuti,Expensive shit,0,Neutral,Jazz,Afrobeat,Funk,1975-06,Ny för mig
+13,2026-03-18,Gemini,The Prodigy,The fat of the land,2,Mycket bra,Electronic,Breakbeat,Big Beat,1997-06,
+14,2026-03-18,Gemini,The Stooges,Funhouse,1,Bra,Rock,Proto-Punk,Garage Rock,1970-07,
+15,2026-03-18,Gemini,Bad Brains,Bad Brains,0,Neutral,Rock,Hardcore Punk,Reggae-Punk,1982-02,Ny för mig
+16,2026-03-18,Gemini,Justice,Cross,1,Bra,Electronic,House,French House,2007-06,Ny för mig
+17,2026-03-19,Gemini,Rage Against the Machine,Rage against the machine,1,Bra,Metal,Rap Metal,Funk Metal,1992-11,
+18,2026-03-19,Gemini,Ministry,Psalm 69: the way to succeed and the way to suck eggs,2,Mycket bra,Industrial,Industrial Metal,EBM,1992-07,
+19,2026-03-19,Gemini,Strapping Young Lad,City,2,Mycket bra,Metal,Industrial Metal,Extreme Metal,1997-02,Ny för mig
+20,2026-03-19,Gemini,Gojira,From Mars to Sirius,1,Bra,Metal,Progressive Metal,Technical Death Metal,2005-09,
+21,2026-03-19,Gemini,Meshuggah,obZen,1,Bra,Metal,Extreme Metal,Djent,2008-03,
+22,2026-03-20,Gemini,Queens of the Stone Age,Songs for the deaf,0,Neutral,Rock,Stoner Rock,Hard Rock,2002-08,
+23,2026-03-20,Gemini,System of a Down,Toxicity,0,Neutral,Metal,Alternative Metal,Nu Metal,2001-09,
+24,2026-03-20,Gemini,Run the Jewels,Run the Jewels 2,1,Bra,Hip Hop,Hardcore Hip Hop,Industrial Hip Hop,2014-10,Ny för mig
+25,2026-03-20,Gemini,Portishead,Dummy,0,Neutral,Electronic,Trip Hop,Downtempo,1994-08,Ny för mig
+26,2026-03-20,Gemini,Carpeneter Brut,Trilogy,1,Bra,Electronic,Synthwave,Darksynth,2015-01,Ny för mig
+27,2026-03-23,Gemini,Gesaffelstein,Aleph,1,Bra,Electronic,Techno,Industrial Techno,2013-10,Ny för mig
+28,2026-03-23,Gemini,Igorrr,Spirituality and distortion,-1,Dålig,Electronic,Breakcore,Avant-Garde Metal,2020-03,Ny för mig
+29,2026-03-23,Gemini,The Comet is Coming,Trust in the lifeforce of the deep mystery,-1,Dålig,Jazz,Nu Jazz,Cosmic Jazz,2019-03,Ny för mig
+30,2026-03-24,Gemini,Talking Heads,Remain in light,0,Neutral,Rock,New Wave,Post-Punk,1980-10,
+31,2026-03-24,Gemini,Miles Davis,Kind of Blue,0,Neutral,Jazz,Modal Jazz,Cool Jazz,1959-08,
+32,2026-03-25,Gemini,Bob Marley & The Wailers,Exodus,0,Neutral,Reggae,Roots Reggae,Dub,1977-06,
+33,2026-03-25,Gemini,Johnny Cash,At Folsom Prison,1,Bra,Country,Outlaw Country,Country-Rock,1968-05,
+34,2026-03-25,Gemini,Underworld,dubnobasswithmyheadman,0,Neutral,Electronic,Techno,Progressive Techno,1994-01,Ny för mig
+35,2026-03-25,Gemini,Wu-Tang Clan,Enter the Wu-Tang (36 Chambers),0,Neutral,Hip Hop,East Coast Hip Hop,Hardcore Hip Hop,1993-11,Ny för mig
+36,2026-03-25,Gemini,Black Flag,Damaged,-1,Dålig,Rock,Hardcore Punk,Punk Rock,1981-12,
+37,2026-03-25,Gemini,Daft Punk,Homework,0,Neutral,Electronic,House,Filter House,1997-01,
+38,2026-03-26,Gemini,Funkadelic,Maggot Brain,1,Bra,R&B,Psychedelic Funk,P-Funk,1971-07,
+39,2026-03-26,Gemini,King Crimson,In the court of the crimson king,0,Neutral,Rock,Progressive Rock,Art Rock,1969-10,Ny för mig
+40,2026-03-26,Gemini,Isaac Hayes,Hot buttered soul,0,Neutral,R&B,Soul,Psychedelic Soul,1969-06,
+41,2026-03-26,Gemini,The Jimi Hendrix Experience,Are you experienced,0,Neutral,Rock,Psychedelic Rock,Blues Rock,1967-05,
+42,2026-03-26,Gemini,Lorde,Melodrama,1,Bra,Pop,Art Pop,Electropop,2017-06,
+43,2026-03-27,Gemini,Depeche Mode,Violator,1,Bra,Electronic,Synth-pop,Darkwave,1990-03,
+44,2026-03-27,Gemini,Pendulum,Hold your colour,1,Bra,Electronic,Drum 'n' Bass,Jungle,2005-07,Ny för mig
+45,2026-03-27,Gemini,The Weeknd,House of balloons,-1,Dålig,R&B,Alternative R&B,PBR&B,2011-03,
+46,2026-03-27,Gemini,Tinariwen,Aman Iman,0,Neutral,Blues,Desert Blues,Tishoumaren,2007-01,Ny för mig
+47,2026-03-27,Gemini,Chic,Risqué,0,Neutral,R&B,Disco,Funk,1979-07,
+48,2026-03-27,Gemini,Tool,Ænima,0,Neutral,Metal,Progressive Metal,Alternative Metal,1996-09,
+49,2026-03-27,Gemini,The Cure,Pornography,0,Neutral,Rock,Gothic Rock,Post-Punk,1982-05,
+50,2026-03-28,Gemini,The Dead South,Good Company,0,Neutral,Country,Bluegrass,Folk-Rock,2014-04,
+51,2026-03-28,Gemini,PJ Harvey,To bring you my love,0,Neutral,Rock,Alternative Rock,Blues Rock,1995-02,
+52,2026-03-28,Gemini,Aphex Twin,Come to Daddy,-1,Dålig,Electronic,IDM,Drill 'n' Bass,1997-10,
+53,2026-03-28,Gemini,Little Richard,Here's Little Richard,0,Neutral,Rock,Rock 'n' Roll,Rhythm & Blues,1957-03,
+54,2026-03-29,Gemini,Muse,Origin of Symmetry,0,Neutral,Rock,Alternative Rock,Space Rock,2001-06,
+55,2026-03-29,Gemini,Ray Charles,The Genius of Ray Charles,0,Neutral,R&B,Soul,Rhythm & Blues,1959-10,
+56,2026-03-29,Gemini,Tiësto,Just Be,1,Bra,Electronic,Trance,Progressive Trance,2004-05,
+57,2026-03-30,Gemini,Fear Factory,Demanufacture,1,Bra,Metal,Industrial Metal,Groove Metal,1995-06,
+58,2026-03-30,Gemini,Rammstein,Mutter,1,Bra,Metal,Industrial Metal,Neue Deutsche Härte,2001-04,
+59,2026-03-30,Gemini,The Chemical Brothers,Dig your own hole,0,Neutral,Electronic,Breakbeat,Big Beat,1997-04,
+60,2026-03-30,Gemini,Sepultura,Chaos A.D.,1,Bra,Metal,Groove Metal,Thrash Metal,1993-09,
+61,2026-03-31,Gemini,The Young Gods,L'Eau Rouge,0,Neutral,Industrial,Industrial Rock,Experimental Rock,1989-09,
+62,2026-03-31,Gemini,Noisia,Split the Atom,0,Neutral,Electronic,Drum 'n' Bass,Neurofunk,2010-04,
+63,2026-03-31,Gemini,Pantera,Vulgar Display of Power,1,Bra,Metal,Groove Metal,Thrash Metal,1992-02,
+64,2026-03-31,Gemini,Die Krupps,II - The Final Option,1,Bra,Industrial,Industrial Metal,EBM,1993-06,
+65,2026-03-31,Gemini,Front 242,Front by Front,0,Neutral,Electronic,EBM,Industrial,1988-10,
+66,2026-04-01,Gemini,Machine Head,Burn my eyes,1,Bra,Metal,Groove Metal,Thrash Metal,1994-08,
+67,2026-04-01,Gemini,KMFDM,Nihil,2,Mycket bra,Industrial,Industrial Rock,Industrial Metal,1995-04,
+68,2026-04-01,Gemini,White Zombie,La Sexorcisto: Devil Music Vol. 1,2,Mycket bra,Metal,Industrial Metal,Groove Metal,1992-03,
+69,2026-04-01,Gemini,The Crystal Method,Vegas,1,Bra,Electronic,Breakbeat,Big Beat,1997-08,
+70,2026-04-01,Gemini,Chase & Status,No more idols,0,Neutral,Electronic,Drum 'n' Bass,Liquid Funk,2011-01,
+71,2026-04-01,Gemini,Front Line Assembly,Tactical Neural Implant,0,Neutral,Industrial,EBM,Electro-Industrial,1992-05,
+72,2026-04-01,Gemini,Rob Zombie,Hellbilly Deluxe,1,Bra,Metal,Industrial Metal,Groove Metal,1998-08,
+73,2026-04-01,Gemini,Prong,Cleansing,1,Bra,Metal,Industrial Metal,Groove Metal,1994-01,
+74,2026-04-02,Gemini,Fatboy Slim,You've come a long way Baby,1,Bra,Electronic,Breakbeat,Big Beat,1998-10,
+75,2026-04-02,Gemini,Static-X,Wisconsin Death Trip,1,Bra,Metal,Industrial Metal,Alternative Metal,1999-03,
+76,2026-04-02,Gemini,Biohazard,State of the world address,0,Neutral,Metal,Groove Metal,Hardcore,1994-05,
+77,2026-04-02,Gemini,Lee Scratch Perry,Super Ape,0,Neutral,Reggae,Dub,Roots Reggae,1976-08,
+78,2026-04-02,Gemini,Ministry,The Mind is a terrible thing to taste,2,Mycket bra,Industrial,Industrial Metal,Hardcore Industrial,1989-11,
+79,2026-04-02,Gemini,Propellerheads,Decksandrumsandrockandroll,1,Bra,Electronic,Breakbeat,Big Beat,1998-01,
+80,2026-04-02,Gemini,Coal Chamber,Coal Chamber,0,Neutral,Metal,Nu-Metal,Alternative Metal,1997-02,
+81,2026-04-02,Gemini,Skinny Puppy,Too dark park,0,Neutral,Industrial,Electro-Industrial,EBM,1990-10,
+82,2026-04-03,Gemini,Junkie XL,Saturday Teenage Kick,1,Bra,Electronic,Breakbeat,Big Beat,1997-10,
+83,2026-04-03,Gemini,Steve Reich,Music for 18 musicians,0,Neutral,Classical,Minimalism,Modern Classical,1978-04,
+84,2026-04-03,Gemini,Godflesh,Streetcleaner,1,Bra,Industrial,Industrial Metal,Sludge Metal,1989-11,
+85,2026-04-03,Gemini,Nine Inch Nails,Broken,0,Neutral,Industrial,Industrial Rock,Industrial Metal,1992-09,
+86,2026-04-04,Gemini,Lard,The last temptation of Reid,1,Bra,Industrial,Industrial Metal,Hardcore Punk,1990-09,
+87,2026-04-04,Gemini,Nailbomb,Point Black,0,Neutral,Metal,Industrial Metal,Thrash Metal,1994-03,
+88,2026-04-04,Egen,Robyn,Sexistential,0,Neutral,Pop,Art Pop,Synth-pop,2026-03,
+89,2026-04-04,Egen,José González,Against the dying of the light,0,Neutral,Rock,Indie Folk,Acoustic,2026-03,
+90,2026-04-04,Gemini,Alice in Chains,Dirt,2,Mycket bra,Rock,Alternative Rock,Grunge,1992-09,
+91,2026-04-04,Gemini,Joy Division,Unknown Pleasures,1,Bra,Rock,Post-Punk,Gothic Rock,1979-06,
+92,2026-04-05,Gemini,Perturbator,Dangerous Days,1,Bra,Electronic,Synthwave,Darksynth,2014-06,
+93,2026-04-05,Copilot,Godflesh,Pure,0,Neutral,Industrial,Industrial Metal,Post-Industrial,1992-01,
+94,2026-04-05,Gemini,Killing Joke,Pandemonium,1,Bra,Rock,Industrial Rock,Post-Punk,1994-02,
+95,2026-04-06,Gemini,Radiohead,Kid A,0,Neutral,Rock,Art Rock,Experimental Rock,2000-10,
+96,2026-04-06,Copilot,Nine Inch Nails,Year Zero,0,Neutral,Industrial,Industrial Rock,Industrial Metal / Glitch,2007-04,
