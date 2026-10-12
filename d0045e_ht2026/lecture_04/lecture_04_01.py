@@ -10,7 +10,9 @@ class Hypercube:
     def getLength(self):
         return self._length
 
-    def setLength(self):
+    def setLength(self, l):
+        if l < 0:
+            raise ValueError("Length must be non-negative")
         self._length = l
 
     def whatAmI(self):
@@ -35,6 +37,7 @@ class Square(Hypercube):
 hc1 = Hypercube(5, 2)
 hc1.whatAmI()
 print(hc1.getLength())
+#hc1.setLength(-9)
 
 sq1 = Square(4)
 sq1.whatAmI()
