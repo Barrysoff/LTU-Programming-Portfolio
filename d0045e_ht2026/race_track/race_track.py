@@ -12,7 +12,6 @@ https://www.geeksforgeeks.org/machine-learning/q-learning-in-python/
 
 import numpy as np
 import pandas as pd
-import random
 
 """
 Constant for path to files containing race track in txt-format.
@@ -54,7 +53,7 @@ class UserInterface:
             print("2. Track 2: Diagonal Course  grid 4 x 4")
             print("3. Track 3: Sharp Turns      grid 10 x 7")
             print("4. Track 4: Open Space       grid 50 x 50")
-            print("q. Exit program\n") #, flush = True)
+            print("q. Exit program\n")
             track_option = input("Enter your option: ").strip()
 
             if track_option.lower() == "q":
@@ -105,32 +104,30 @@ class RaceTrack:
                 if char != ' ':
                     self.walls.add((x, y))
 
-        print(f"Walls are located at {self.walls}\n")
-
 
     def step(self, current_state, action):              # Geeksforgeeks
         y, x = divmod(current_state, self.width)
 
         new_x, new_y = x, y
 
-        if action == 0:   # and x > 0:                                           # Left
+        if action == 0:     # Left
             new_x -= 1
-        elif action == 1: # and x < self.width - 1:                            # Right
+        elif action == 1:   # Right
             new_x += 1
-        elif action == 2: # and y > 0:                                         # Up
+        elif action == 2:   # Up
             new_y -= 1
-        elif action == 3: # and y < self.height - 1:                           # Down
+        elif action == 3:   # Down
             new_y += 1
-        elif action == 4: # and x > 0 and y > 0:                               # Left and up
+        elif action == 4:   # Left and up
             new_x -= 1
             new_y -= 1
-        elif action == 5: # and x < self.width - 1 and y < self.height -1:     # Right and down
+        elif action == 5:   # Right and down
             new_x += 1
             new_y += 1
-        elif action == 6: # and x > 0 and y < self.height - 1:                 # Left and down
+        elif action == 6:   # Left and down
             new_x -= 1
             new_y += 1
-        elif action == 7: # and x < self.width - 1 and y > 0:                  # Right and up
+        elif action == 7:   # Right and up
             new_x += 1
             new_y -= 1      
 
@@ -150,7 +147,6 @@ class RaceTrack:
             done = True
 
         next_state = (new_y * self.width) + new_x
-        # print(current_state, next_state)
 
         return next_state, reward, done
 
@@ -193,7 +189,7 @@ class Vehicle:
         self.action_names = action_names
         self.qtable = QTable(ss, dim)
 
-    def train(self, track):
+    def learn(self, track):
         start_x, start_y = track.start
         start_index = (start_y * track.width) + start_x
 
@@ -213,7 +209,6 @@ class Vehicle:
                     action = np.argmax(self.qtable.table[current_state])    # Exploit
 
                 next_state, reward, done = track.step(current_state, action)
-                # print(f"State: {current_state}, Action: {action}, Next: {next_state}, Reward: {reward}")
 
                 # Bellman equation for updating QTable
                 
@@ -247,25 +242,26 @@ class Crawler(Vehicle):
 def main():
     # Call UserInterface to let user select track and vehicle.
     ui = UserInterface()
-    track_option, vehicle_option = ui.runMenu()
 
-    if track_option and vehicle_option:
-        print(f"Track: {track_option}, Vehicle: {vehicle_option}")
+    track_files = {
+        "1": "auto1.txt",
+        "2": "auto2.txt",
+        "3": "auto3.txt",
+        "4": "auto4.txt"
+    }
 
-        track_files = {
-            "1": "auto1.txt",
-            "2": "auto2.txt",
-            "3": "auto3.txt",
-            "4": "auto4.txt"
-        }
+    while True:
+
+        track_option, vehicle_option = ui.runMenu()
+
+        if track_option is None or vehicle_option is None:
+            break
 
         filename = track_files.get(track_option)
-        print(f"My Track: {filename}")
 
         # Read the track file, print track data, print track layout.
 
         my_track = RaceTrack(filename)
-        print(f"Track height: {my_track.height}, track width: {my_track.width}, start location: {my_track.start}, finish line {my_track.finish}\n")
 
         print("Visual presentation of the track:\n")
         for line in my_track.race_track_map:
@@ -280,17 +276,19 @@ def main():
             my_vehicle = Car(learning_rate, discount_factor, exploration_prob, epochs, ss)
         elif vehicle_option == "2":
             my_vehicle = Crawler(learning_rate, discount_factor, exploration_prob, epochs, ss)
-                
-        my_vehicle.train(my_track)
-        
+                    
+        my_vehicle.learn(my_track)
+            
         df_qtable = pd.DataFrame(my_vehicle.qtable.table, columns = my_vehicle.action_names)
         df_qtable.index.name = 'State'
 
-        pd.set_option('display.max_columns', None)  # Tillåter alla kolumner att visas
-        pd.set_option('display.width', 1000)        # Ökar den tillåtna teckenbredden för utskriften
+        #pd.set_option('display.max_rows', None)
 
-        print("Updated Q-table:")
-        print(df_qtable.round(2))
+        df_filtered = df_qtable.loc[(df_qtable != 0).any(axis=1)]
+
+        print("Updated Q-table (Filtered):")
+        print(df_filtered.round(2))
+        print()
 
 if __name__ == "__main__":
     main()
