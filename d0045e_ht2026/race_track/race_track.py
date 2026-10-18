@@ -8,11 +8,13 @@ in accordance with the allowed aids policy.
 Reference sites:
 https://www.datacamp.com/tutorial/introduction-q-learning-beginner-tutorial
 https://www.geeksforgeeks.org/machine-learning/q-learning-in-python/
+https://realpython.com/python-profiling/
 """
 
 import numpy as np
 import pandas as pd
 import os
+import time
 
 """
 Constant for path to files containing race track in txt-format.
@@ -180,8 +182,6 @@ class QTable:
     def __init__(self, ss, action_space):
         self.table = np.zeros((ss,action_space))
 
-"""
-"""
 
 class Vehicle:
     def __init__(self, lr, df, ep, epo, ss, dim, action_names):
@@ -199,6 +199,8 @@ class Vehicle:
 
         min_steps = float('inf')
         max_steps = 2000                                    # Prevent infinite loops
+        stale_epochs = 0
+        stale_threshold = 100
         
         for epoch in range(self.epochs): 
             current_state = start_index
@@ -221,8 +223,23 @@ class Vehicle:
                 current_state = next_state
                 steps += 1
 
+            if done:
+                if steps == min_steps:
+                    stale_epochs += 1
+                elif steps < min_steps:
+                    min_steps = steps
+                    stale_epochs = 0
+                else:
+                    stale_epochs = 0
+
+                if stale_epochs >= stale_threshold:
+                    print(f"Shortest route found. Stopping after {epoch + 1} epochs.")
+                    break
+
             if done and steps < min_steps:
                 min_steps = steps
+
+            self.exploration_prob = self.exploration_prob * 0.99
 
         if min_steps != float('inf'):
             print(f"Shortest route: {min_steps}")
@@ -301,9 +318,13 @@ def main():
                 my_vehicle = Car(learning_rate, discount_factor, exploration_prob, epochs, ss)
             elif vehicle_option == "2":
                 my_vehicle = Crawler(learning_rate, discount_factor, exploration_prob, epochs, ss)
-                        
+
+            start_time = time.perf_counter()          
             my_vehicle.learn(my_track)
-                
+            end_time = time.perf_counter()
+
+            learn_time = end_time - start_time
+ 
             df_qtable = pd.DataFrame(my_vehicle.qtable.table, columns = my_vehicle.action_names)
             df_qtable.index.name = 'State'
 
@@ -314,6 +335,8 @@ def main():
             print("Updated Q-table (Filtered):")
             print(df_filtered.round(2))
             print()
+
+            print(f"Vehicle {vehicle_option} needed {learn_time:.4f} seconds to optimise track {track_option}.\n")
 
     except KeyboardInterrupt:
         print("\nUser interruption!\n")
