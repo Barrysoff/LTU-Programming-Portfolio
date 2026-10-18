@@ -12,6 +12,7 @@ https://www.geeksforgeeks.org/machine-learning/q-learning-in-python/
 
 import numpy as np
 import pandas as pd
+import os
 
 """
 Constant for path to files containing race track in txt-format.
@@ -46,7 +47,7 @@ class UserInterface:
 
         return track, vehicle
 
-    def _select_track(self): 
+    def select_track(self): 
         while True:
             print("# Select Race Track")
             print("1. Track 1: Curved Course    grid 40 x 20")
@@ -64,7 +65,7 @@ class UserInterface:
             else:
                 return track_option
     
-    def _select_vehicle(self):
+    def select_vehicle(self):
         while True:
             print("# Select Vehicle")
             print("1. Vehicle 1: Car            4 degrees of motion")
@@ -88,6 +89,9 @@ class RaceTrack:
     def __init__(self, filename):
         race_track = ReadTrackFile(FILEPATH, filename)
         self.race_track_map = race_track.load_track()
+
+        if not self.race_track_map:
+            raise ValueError("File doesn't contain a race track.")
 
         self.height = len(self.race_track_map)
         self.width = len(self.race_track_map[0])
@@ -244,51 +248,75 @@ def main():
     ui = UserInterface()
 
     track_files = {
-        "1": "auto1.txt",
-        "2": "auto2.txt",
-        "3": "auto3.txt",
-        "4": "auto4.txt"
+        "1": "Track1.txt",
+        "2": "Track2.txt",
+        "3": "Track3.txt",
+        "4": "Track4.txt"
     }
 
-    while True:
+    try:
+        while True:
 
-        track_option, vehicle_option = ui.runMenu()
+            track_option = ui.select_track()
 
-        if track_option is None or vehicle_option is None:
-            break
+            if track_option is None:
+                break
 
-        filename = track_files.get(track_option)
+            filename = track_files.get(track_option)
 
-        # Read the track file, print track data, print track layout.
+            # Read the track file, print track data, print track layout.
 
-        my_track = RaceTrack(filename)
+            try:
+                my_track = RaceTrack(filename)
+            except FileNotFoundError:
+                if not os.path.exists(FILEPATH):
+                    print(f"{FILEPATH} does not exist.")
+                    print("Exiting program!\n")
+                    break
+                else:
+                    print(f"{filename} does not exist.")
+                    print("Please select another race track.\n")
+                    continue
+            except ValueError as e:
+                print(f"Error in {filename}: {e}")
+                print("Please select another race track.\n")
+                continue
 
-        print("Visual presentation of the track:\n")
-        for line in my_track.race_track_map:
-            print(line)
-        print()
 
-        # Calculate the state space, ss.
+            vehicle_option = ui.select_vehicle()
 
-        ss = (my_track.width * my_track.height)
+            if vehicle_option is None:
+                break
 
-        if vehicle_option == "1":
-            my_vehicle = Car(learning_rate, discount_factor, exploration_prob, epochs, ss)
-        elif vehicle_option == "2":
-            my_vehicle = Crawler(learning_rate, discount_factor, exploration_prob, epochs, ss)
-                    
-        my_vehicle.learn(my_track)
-            
-        df_qtable = pd.DataFrame(my_vehicle.qtable.table, columns = my_vehicle.action_names)
-        df_qtable.index.name = 'State'
+            print("Visual presentation of the track:\n")
+            for line in my_track.race_track_map:
+                print(line)
+            print()
 
-        #pd.set_option('display.max_rows', None)
+            # Calculate the state space, ss.
 
-        df_filtered = df_qtable.loc[(df_qtable != 0).any(axis=1)]
+            ss = (my_track.width * my_track.height)
 
-        print("Updated Q-table (Filtered):")
-        print(df_filtered.round(2))
-        print()
+            if vehicle_option == "1":
+                my_vehicle = Car(learning_rate, discount_factor, exploration_prob, epochs, ss)
+            elif vehicle_option == "2":
+                my_vehicle = Crawler(learning_rate, discount_factor, exploration_prob, epochs, ss)
+                        
+            my_vehicle.learn(my_track)
+                
+            df_qtable = pd.DataFrame(my_vehicle.qtable.table, columns = my_vehicle.action_names)
+            df_qtable.index.name = 'State'
 
+            #pd.set_option('display.max_rows', None)
+
+            df_filtered = df_qtable.loc[(df_qtable != 0).any(axis=1)]
+
+            print("Updated Q-table (Filtered):")
+            print(df_filtered.round(2))
+            print()
+
+    except KeyboardInterrupt:
+        print("\nUser interruption!\n")
+    
 if __name__ == "__main__":
     main()
