@@ -199,8 +199,10 @@ class Vehicle:
 
         min_steps = float('inf')
         max_steps = 2000                                    # Prevent infinite loops
+        last_qtable = np.copy(self.qtable.table)
         stale_epochs = 0
         stale_threshold = 100
+        decay = 0.99
         
         for epoch in range(self.epochs): 
             current_state = start_index
@@ -224,22 +226,23 @@ class Vehicle:
                 steps += 1
 
             if done:
-                if steps == min_steps:
+                delta = np.max(np.abs(self.qtable.table - last_qtable))
+                if delta < 1e-5:
                     stale_epochs += 1
-                elif steps < min_steps:
-                    min_steps = steps
-                    stale_epochs = 0
                 else:
                     stale_epochs = 0
 
+                last_qtable = np.copy(self.qtable.table)
+
                 if stale_epochs >= stale_threshold:
                     print(f"Shortest route found. Stopping after {epoch + 1} epochs.")
+
                     break
 
             if done and steps < min_steps:
                 min_steps = steps
 
-            self.exploration_prob = self.exploration_prob * 0.99
+            self.exploration_prob = self.exploration_prob * decay
 
         if min_steps != float('inf'):
             print(f"Shortest route: {min_steps}")
