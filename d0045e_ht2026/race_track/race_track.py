@@ -23,15 +23,6 @@ Constant for path to files containing race track in txt-format.
 FILEPATH = "/workspaces/LTU-Programming-Portfolio/d0045e_ht2026/race_track/"
 
 """
-Set hyperparameters (geeksforgeeks)
-"""
-
-learning_rate = 0.8         # How much new info overrides old info.
-discount_factor = 0.95      # How much future rewards are valued.
-exploration_prob = 0.2      # Probability of taking a random action.
-epochs = 10000              # Number of training episodes.
-
-"""
 UserInterface lets the user select race track and vehicle.
 """
 
@@ -184,13 +175,18 @@ class QTable:
 
 
 class Vehicle:
-    def __init__(self, lr, df, ep, epo, ss, dim, action_names):
-        self.learning_rate = lr
-        self.discount_factor = df
-        self.exploration_prob = ep
-        self.epochs = epo
+    #learning_rate = 0.8         # How much new info overrides old info.
+    #discount_factor = 0.95      # How much future rewards are valued.
+    #exploration_prob = 0.2      # Probability of taking a random action.
+    #epochs = 10000              # Number of training episodes.
+    def __init__(self, ss, dim, action_names, learning_rate = 0.8, discount_factor = 0.95, exploration_prob = 0.2, epochs = 10000, epsilon_decay = 0.99):
+        self.learning_rate = learning_rate
+        self.discount_factor = discount_factor
+        self.exploration_prob = exploration_prob
+        self.epochs = epochs
         self.dimensions = dim
         self.action_names = action_names
+        self.epsilon_decay = epsilon_decay
         self.qtable = QTable(ss, dim)
 
     def learn(self, track):
@@ -202,7 +198,6 @@ class Vehicle:
         last_qtable = np.copy(self.qtable.table)
         stale_epochs = 0
         stale_threshold = 100
-        decay = 0.99
         
         for epoch in range(self.epochs): 
             current_state = start_index
@@ -242,7 +237,7 @@ class Vehicle:
             if done and steps < min_steps:
                 min_steps = steps
 
-            self.exploration_prob = self.exploration_prob * decay
+            self.exploration_prob = self.exploration_prob * self.epsilon_decay
 
         if min_steps != float('inf'):
             print(f"Shortest route: {min_steps}")
@@ -254,14 +249,14 @@ Vehicles
 """
 
 class Car(Vehicle):
-    def __init__(self, lr, df, ep, epo, ss):
+    def __init__(self, ss, **kwargs):
         actions = ['Left', 'Right', 'Up', 'Down']
-        super().__init__(lr, df, ep, epo, ss, dim = 4, action_names = actions)
+        super().__init__(ss, dim = 4, action_names = actions, **kwargs)
 
 class Crawler(Vehicle):
-    def __init__(self, lr, df, ep, epo, ss):
+    def __init__(self, ss, **kwargs):
         actions = ['Left', 'Right', 'Up', 'Down', 'Left/Up', 'Right/Down', 'Left/Down', 'Right/Up']
-        super().__init__(lr, df, ep, epo, ss, dim = 8, action_names = actions)
+        super().__init__(ss, dim = 8, action_names = actions, **kwargs)
 
 def main():
     # Call UserInterface to let user select track and vehicle.
@@ -318,9 +313,9 @@ def main():
             ss = (my_track.width * my_track.height)
 
             if vehicle_option == "1":
-                my_vehicle = Car(learning_rate, discount_factor, exploration_prob, epochs, ss)
+                my_vehicle = Car(ss)
             elif vehicle_option == "2":
-                my_vehicle = Crawler(learning_rate, discount_factor, exploration_prob, epochs, ss)
+                my_vehicle = Crawler(ss)
 
             start_time = time.perf_counter()          
             my_vehicle.learn(my_track)
