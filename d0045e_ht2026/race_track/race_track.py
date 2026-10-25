@@ -256,11 +256,6 @@ class ReadTrackFile:
             self.track_data = [line.strip('\n') for line in file.readlines()]
         return self.track_data
 
-"""
-State Space (ss) is defined as the size of the track.
-Action Space is 4 for Car; left, right, up, down.
-Action Space is 8 for Crawler; left, right, up, down, left/up, righht/down, left/down, right/up.
-"""
 
 class QTable:
     """
@@ -273,7 +268,11 @@ class QTable:
 
         Arguments:
             ss: state space, the size if the Race Track.
-            action_space: the number of movements for the selected Vehicle.    
+            action_space: the number of movements for the selected Vehicle.
+
+        Note:
+            Action Space is 4 for Car; left, right, up, down.
+            Action Space is 8 for Crawler; left, right, up, down, left/up, righht/down, left/down, right/up.
         """
 
         self.table = np.zeros((ss,action_space))
@@ -317,7 +316,7 @@ class Vehicle:
         """
         The training model for the Vehicles. Training continues until no changes in the Qtable can be detected for a defined number of iterations.
 
-        The Bellamn Equation is used for updating the QTable.
+        The Bellman Equation is used for updating the QTable.
 
         Arguments:
             track: the track selected by the user.
@@ -371,7 +370,6 @@ class Vehicle:
 
                 if stale_epochs >= stale_threshold:
                     print(f"Shortest route found. Stopping after {epoch + 1} epochs.")
-
                     break
 
             if done and steps < min_steps:
@@ -402,7 +400,7 @@ class Car(Vehicle):
             The car has 4 degrees of freedom
         """
 
-        actions = ['Left', 'Right', 'Up', 'Down']
+        actions = ["Left", "Right", "Up", "Down"]
         super().__init__(ss, dim = 4, action_names = actions, **kwargs)
 
 
@@ -423,7 +421,7 @@ class Crawler(Vehicle):
             The Crawler has 8 degrees of freedom.
         """
 
-        actions = ['Left', 'Right', 'Up', 'Down', 'Left/Up', 'Right/Down', 'Left/Down', 'Right/Up']
+        actions = ["Left", "Right", "Up", "Down", "Left/Up", "Right/Down", "Left/Down", "Right/Up"]
         super().__init__(ss, dim = 8, action_names = actions, **kwargs)
 
 def main():
